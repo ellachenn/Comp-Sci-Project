@@ -12,3 +12,4 @@ let booktext = prompt("Enter exerpt from book: ");
 // booktext = parseFloat(booktext);
 console.log(booktext);
 
+// new code
