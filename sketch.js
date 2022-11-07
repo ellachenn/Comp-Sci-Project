@@ -1,6 +1,11 @@
 
 // control "c" to get back to where you type "npx http-server" in terminal
-// hiiiii
+
+let result;
+
+function preload() {
+  result = loadStrings('grades.txt');
+}
 
 function setup() {
   createCanvas(400, 400);
@@ -29,25 +34,38 @@ function convertToArray() {
   console.log(exerptArray)
 }
 
+function make2DArray() {
+  let twoDArray = []
+  for (let i of result) {
+    let words = result[i].split(",");
+    for (w of words) {
+      twoDArray.push(w);
+    }
+  }
+  console.log(twoDArray);
+}
+
+
 function compare() {
   counter = 0
-  for (i grade in grades) {
-    for (word in grade) {
-      for (exword in exerptArray) {
+  for (let grade of twoDArray) {
+    for (let word of grade) {
+      for (let exword of exerptArray) {
         if (word == exword) {
           // need a counter for each different grade
           counter = counter + 1
         }
-      }
       }
     }
   }
   exerptArray
 }
 
+// getting at individual words in the grades.txt file
+// word + i = result[i].split(",");
+// let words = result[0].split(",");
+// console.log(words[0]);
+
 // function draw() {
 //   background(0, 255, 0);
 // }
-
-// questions for dbb
-// p5js doesn't recognize chinese characters from error code
