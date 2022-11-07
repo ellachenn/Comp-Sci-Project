@@ -1,5 +1,6 @@
 
 // control "c" to get back to where you type "npx http-server" in terminal
+// hi
 
 function setup() {
   createCanvas(400, 400);
