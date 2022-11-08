@@ -21,6 +21,7 @@ function setup() {
   greeting.position(20, 5);
   textAlign(CENTER);
   textSize(50);
+  make2DArray()
 }
 
 function greet() {
@@ -34,32 +35,56 @@ function convertToArray() {
   console.log(exerptArray)
 }
 
-function make2DArray() {
-  let twoDArray = []
-  for (let i of result) {
-    let words = result[i].split(",");
-    for (w of words) {
-      twoDArray.push(w);
-    }
-  }
-  console.log(twoDArray);
-}
-
-
+// idea 2
 function compare() {
-  counter = 0
-  for (let grade of twoDArray) {
-    for (let word of grade) {
-      for (let exword of exerptArray) {
-        if (word == exword) {
-          // need a counter for each different grade
-          counter = counter + 1
-        }
+  // let counter = 0
+  for (i of result) {
+    (word + i) = result[i].split(",");
+    for (word of (word + i)) {
+      if (word == exword) {
+        
+        // need a counter for each different grade  
+        // or instead of counter, create a 2d array that has an array for each grade, and i push each exerpt word into the corresponding grade array within the 2d array
+        // bc then i can just do array[i].length to count how many words are in each grade level and wouldn't have to have 6 different counters
+        // example to making and initializing a 2d array:
+        // https://replit.com/@advanced-cs-2022-23/55-2D-Array-EllaChen5#script.js
       }
     }
   }
-  exerptArray
 }
+
+
+
+// idea 1
+// function make2DArray() {
+//   let twoDArray = []
+//   for (let i of result) {
+//     let words = result[i].split(",");
+//     for (w of words) {
+//       twoDArray.push(w);
+//     }
+//   }
+//   console.log(twoDArray);
+// }
+
+// idea 1
+// function compare() {
+//   counter = 0
+//   for (let grade of twoDArray) {
+//     for (let word of grade) {
+//       for (let exword of exerptArray) {
+//         if (word == exword) {
+//           // need a counter for each different grade
+//           counter = counter + 1
+//         }
+//       }
+//     }
+//   }
+//   exerptArray
+// }
+
+
+
 
 // getting at individual words in the grades.txt file
 // word + i = result[i].split(",");
