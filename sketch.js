@@ -13,7 +13,7 @@ function preload() {
 
 function setup() {
   createCanvas(400, 400);
-  console.log("Hello World")
+  // console.log("Hello World")
 
   // make button 
   input = createInput();
@@ -26,17 +26,24 @@ function setup() {
   textAlign(CENTER);
   textSize(50);
   listToArray();
-  // console.log(compareAndSort());
-  // console.log(getGradeLevel())
-  console.log(getGradeLevel('服')); // 0
+  // console.log(getGradeLevel('你')); // 0
+  // arrayTrial();
+  // having this arrayTrial is breaking it. it won't even print line 38 exerpt array when this isn't commented out. why?
 }
 
 function greet() {
   // exerpt is variable for user input
   const exerpt = input.value();
   exerptArray.push(exerpt);
-  console.log(exerptArray)
+  console.log(exerptArray);
 }
+
+function arrayTrial() {
+  for (let character of exerptArray) {
+    console.log(character)
+  }
+}
+
 
 // sort exerpt word into 2D array
 // do array[i].length to count how many words are in each grade level
@@ -52,21 +59,19 @@ function listToArray() {
   // return listArray;
 }
 
-function compareAndSort() {
-  // for (let character of exerptArray) {
-  //   for (let grade of listArray) {
-  //     sortedExerptArray[grade]= [];
-  //     for (let word of grade) {
-  //       if (character == word) {
-  //          // push character into the appropriate grade array in exerptArray
-  //         sortedExerptArray[grade].push(character);
-  //       }
-  //     }
-  //   }
+function sortExerpt() {
+  // for (let r = 0; r <= 6; r++) {
+  //   sortedExerptArray[r] = [];
   // }
+  // the below for loop isn't working bc the word it prints isn't a character, it's the entire exerpt array.
+  // so i need to split exerpt array into each character being an element
+  for (let word of exerptArray) {
+    console.log(word)
+    console.log(getGradeLevel(word))
+    // sortedExerptArray[getGradeLevel(word)].push(word);
+  }
   // return sortedExerptArray;
 }
-
 
 
 function getGradeLevel(character) {
@@ -81,3 +86,4 @@ function getGradeLevel(character) {
     }
     return -1;
 }
+
