@@ -1,11 +1,6 @@
 // control "c" to get back to where you type "npx http-server" in terminal
 // option shift f = automatically indents
 
-// next steps!
-  // get length of each array within the sortedExerptArray to conclude how many exerpt words are from each grade
-  // calculate percentages so grade length divided by total number of expert words
-  // return reading level
-
 // tester: 你好讨厌耳朵衣
 
 let wordList;
@@ -37,6 +32,7 @@ function submitted() {
   // console.log(exerptArray);
   // console.log(sortExerpt());
   calculate(sortExerpt());
+  // console.log(calculate(sortExerpt))
 }
 
 // fills out listArray, soring grade words into a 2D array comrpised of each grade's words separately
@@ -46,7 +42,6 @@ function listToArray() {
     listArray.push(character);
   }
 }
-
 
 function getGradeLevel(character) {
   let g = 0;
@@ -61,7 +56,6 @@ function getGradeLevel(character) {
   return -1;
 }
 
-// in next function, do array[i].length to count how many words are in each grade level
 function sortExerpt() {
   let sortedExerptArray = [];
   for (let r = 0; r <= 5; r++) {
@@ -77,12 +71,22 @@ function sortExerpt() {
 
 function calculate(sE) {
   percArr = [];
-  console.log(sE);
-  // let counter = 1;
+  // console.log(sE);
   for (let grade of sE) {
     percentage = grade.length / exerptArray.length;
     percArr.push(percentage);
-    // console.log(counter++, percentage);
   }
   console.log(percArr);
+  // return percArr;
+  // can't return it but can print it for some reason. says sE on 75 is not iterable?
 }
+
+// once i've returned percArr:
+function getGrade() {
+  if ()
+}
+
+
+do the math for what percentages correspond to what grades
+if over 80% are first grade words, first grade
+if over 80% are first and second grade words and over
