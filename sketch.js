@@ -29,10 +29,10 @@ function setup() {
 
 function submitted() {
   exerptArray = input.value();
-  // console.log(exerptArray);
   // console.log(sortExerpt());
-  calculate(sortExerpt());
-  // console.log(calculate(sortExerpt))
+  // console.log(calculate(sortExerpt()));
+  // console.log(diffPoints(calculate(sortExerpt())));
+  console.log(getGrade(diffPoints(calculate(sortExerpt()))));
 }
 
 // fills out listArray, soring grade words into a 2D array comrpised of each grade's words separately
@@ -70,23 +70,52 @@ function sortExerpt() {
 }
 
 function calculate(sE) {
-  percArr = [];
-  // console.log(sE);
+  let percArr = [];
   for (let grade of sE) {
     percentage = grade.length / exerptArray.length;
     percArr.push(percentage);
   }
-  console.log(percArr);
-  // return percArr;
-  // can't return it but can print it for some reason. says sE on 75 is not iterable?
+  return percArr;
 }
 
-// once i've returned percArr:
-function getGrade() {
-  if ()
+function diffPoints(pA) {
+  let counter = 0;
+  for (let i = 0; i < 5; i++) {
+    counter = 100 * (pA[i] * (i + 1)) + counter;
+  }
+  return counter;
 }
 
+function getGrade(points) {
+  if (points == 0) {
+    return "undefined";
+  }
+  else if (points <= 100) {
+    return "first grade";
+  }
+  else if (points <= 200) {
+    return "second grade";
+  }
+  else if (points <= 300) {
+    return "third grade";
+  }
+  else if (points <= 400) {
+    return "fourth grade";
+  }
+  else if (points <= 500) {
+    return "fifth grade";
+  }
+  else if (points <= 600) {
+    return "sixth grade";
+  }
+}
 
-do the math for what percentages correspond to what grades
-if over 80% are first grade words, first grade
-if over 80% are first and second grade words and over
+// return corresponding number of goomba goombas as the returned grade
+
+// graph class visualizing logic behind conclusion
+// need:
+// two classes (parent/child), one object
+
+// parent class: basic bar graph
+// child: bar graph with numbers on top
+// object?
