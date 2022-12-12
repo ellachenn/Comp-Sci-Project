@@ -6,13 +6,15 @@
 let wordList;
 let listArray = [];
 let exerptArray = [];
+let bar;
+let betterBar;
 
 function preload() {
   wordList = loadStrings("grades.txt");
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 
   // make button
   input = createInput();
@@ -27,12 +29,31 @@ function setup() {
   listToArray();
 }
 
+// question: betterGraph isn't working! lines 44-47 and 54-56
+
 function submitted() {
   exerptArray = input.value();
   // console.log(sortExerpt());
   // console.log(calculate(sortExerpt()));
   // console.log(diffPoints(calculate(sortExerpt())));
-  console.log(getGrade(diffPoints(calculate(sortExerpt()))));
+  // console.log(getGrade(diffPoints(calculate(sortExerpt()))));
+  let calcedGrade = getGrade(diffPoints(calculate(sortExerpt())));
+  console.log(calcedGrade);
+  bar = new Graph (100, 150, 200, calcedGrade);
+
+  let perc = calculate(sortExerpt())
+  for (i = 0; i <= 5; i++) {
+    betterBar = new BetterGraph (100, 150, 200, 1, perc[i]);
+  }
+}
+
+function draw() {
+  if (bar) {
+    bar.display();
+  }
+  if (betterBar) {
+    betterBar.display();
+  }
 }
 
 // fills out listArray, soring grade words into a 2D array comrpised of each grade's words separately
@@ -72,7 +93,7 @@ function sortExerpt() {
 function calculate(sE) {
   let percArr = [];
   for (let grade of sE) {
-    percentage = grade.length / exerptArray.length;
+    percentage = grade.length / exerptArray.length * 100;
     percArr.push(percentage);
   }
   return percArr;
@@ -81,7 +102,7 @@ function calculate(sE) {
 function diffPoints(pA) {
   let counter = 0;
   for (let i = 0; i < 5; i++) {
-    counter = 100 * (pA[i] * (i + 1)) + counter;
+    counter = (pA[i] * (i + 1)) + counter;
   }
   return counter;
 }
