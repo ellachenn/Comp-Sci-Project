@@ -29,8 +29,6 @@ function setup() {
   listToArray();
 }
 
-// question: betterGraph isn't working! lines 44-47 and 54-56
-
 function submitted() {
   exerptArray = input.value();
   // console.log(sortExerpt());
@@ -41,10 +39,14 @@ function submitted() {
   console.log(calcedGrade);
   bar = new Graph (100, 150, 200, calcedGrade);
 
-  let perc = calculate(sortExerpt())
+  // not working! trying to make 6 bars next to each other w percentage labeled on top
+  let perc = calculate(sortExerpt());
   for (i = 0; i <= 5; i++) {
-    betterBar = new BetterGraph (100, 150, 200, 1, perc[i]);
+    betterBar = new BetterGraph (100 + 40 * i, 150, perc[i] * 5, i, perc[i]);
   }
+
+  // let perc = calculate(sortExerpt());
+  // betterBar = new BetterGraph (100, 150, 200, 1, perc[0]);
 }
 
 function draw() {
@@ -94,7 +96,7 @@ function calculate(sE) {
   let percArr = [];
   for (let grade of sE) {
     percentage = grade.length / exerptArray.length * 100;
-    percArr.push(percentage);
+    percArr.push(ceil(percentage));
   }
   return percArr;
 }

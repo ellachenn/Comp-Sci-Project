@@ -6,6 +6,6 @@ class BetterGraph extends Graph {
     }
     display () {
         super.display();
-        text(this.point, this.x + 25, this.y - 20)
+        text(this.point + "%", this.x + 25, this.y - 20)
     }
 }
