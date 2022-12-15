@@ -1,13 +1,17 @@
 // control "c" to get back to where you type "npx http-server" in terminal
 // option shift f = automatically indents
 
-// tester: 你好讨厌耳朵衣
+// tester: 你好猴子耳朵衣
+
+// reset console after each try. clear things
 
 let wordList;
 let listArray = [];
 let exerptArray = [];
 let bar;
 let betterBar;
+let input;
+let bars = [];
 
 function preload() {
   wordList = loadStrings("grades.txt");
@@ -35,26 +39,26 @@ function submitted() {
   // console.log(calculate(sortExerpt()));
   // console.log(diffPoints(calculate(sortExerpt())));
   // console.log(getGrade(diffPoints(calculate(sortExerpt()))));
-  let calcedGrade = getGrade(diffPoints(calculate(sortExerpt())));
-  console.log(calcedGrade);
-  bar = new Graph (100, 150, 200, calcedGrade);
 
-  // not working! trying to make 6 bars next to each other w percentage labeled on top
+  // name functions better so this nested thing is clear
+  // let calcedGrade = getGrade(diffPoints(calculate(sortExerpt())));
+  // console.log(calcedGrade);
+  // bar = new Graph (100, 150, 200, calcedGrade);
+
   let perc = calculate(sortExerpt());
   for (i = 0; i <= 5; i++) {
-    betterBar = new BetterGraph (100 + 40 * i, 150, perc[i] * 5, i, perc[i]);
+    bars.push(new BetterGraph (100 + 40 * i, 150, perc[i] * 5, i + 1, perc[i]));
   }
-
-  // let perc = calculate(sortExerpt());
-  // betterBar = new BetterGraph (100, 150, 200, 1, perc[0]);
 }
+
+// bars are drawn upside down. how do i flip draw them the right side up?
 
 function draw() {
   if (bar) {
     bar.display();
   }
-  if (betterBar) {
-    betterBar.display();
+  for (const bar of bars) {
+    bar.display();
   }
 }
 
