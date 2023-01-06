@@ -9,7 +9,6 @@ let wordList;
 let listArray = [];
 let exerptArray = [];
 let bar;
-let betterBar;
 let input;
 let bars = [];
 
@@ -36,22 +35,20 @@ function setup() {
 function submitted() {
   exerptArray = input.value();
   // console.log(sortExerpt());
-  // console.log(calculate(sortExerpt()));
-  // console.log(diffPoints(calculate(sortExerpt())));
-  // console.log(getGrade(diffPoints(calculate(sortExerpt()))));
+  // console.log(calcPerc(sortExerpt()));
+  // console.log(diffPoints(calcPerc(sortExerpt())));
+  // console.log(getGrade(diffPoints(calcPerc(sortExerpt()))));
 
   // name functions better so this nested thing is clear
-  // let calcedGrade = getGrade(diffPoints(calculate(sortExerpt())));
+  // let calcedGrade = getGrade(diffPoints(calcPerc(sortExerpt())));
   // console.log(calcedGrade);
   // bar = new Graph (100, 150, 200, calcedGrade);
 
-  let perc = calculate(sortExerpt());
+  let perc = calcPerc(sortExerpt());
   for (i = 0; i <= 5; i++) {
-    bars.push(new BetterGraph (100 + 40 * i, 150, perc[i] * 5, i + 1, perc[i]));
+    bars.push(new Graph (100 + 40 * i, 350, perc[i] * 5, i + 1, perc[i]));
   }
 }
-
-// bars are drawn upside down. how do i flip draw them the right side up?
 
 function draw() {
   if (bar) {
@@ -96,7 +93,7 @@ function sortExerpt() {
   return sortedExerptArray;
 }
 
-function calculate(sE) {
+function calcPerc(sE) {
   let percArr = [];
   for (let grade of sE) {
     percentage = grade.length / exerptArray.length * 100;
@@ -138,11 +135,5 @@ function getGrade(points) {
 }
 
 // return corresponding number of goomba goombas as the returned grade
-
-// graph class visualizing logic behind conclusion
 // need:
-// two classes (parent/child), one object
-
-// parent class: basic bar graph
-// child: bar graph with numbers on top
-// object?
+// one object

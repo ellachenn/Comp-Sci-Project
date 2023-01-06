@@ -1,15 +1,11 @@
-class Graph {
-    constructor (x, y, h, g) {
-        this.x = x;
-        this.y = y;
-        this.h = h;
+class Graph extends Bar {
+    constructor (x, y, h, g, point) {
+        super(x, y, h, g);
         this.w = 40;
-        this.g = g;
+        this.point = point;
     }
-    
     display () {
-        rect(this.x, this.y, this.w, this.h);
-        textSize(20)
-        text(this.g, this.x + 25, this.y + this.h + 40);
+        super.display();
+        text(this.point + "%", this.x + 25, this.y - this.h - 10)
     }
 }
