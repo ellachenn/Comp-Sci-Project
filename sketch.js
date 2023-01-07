@@ -10,7 +10,7 @@ let listArray = [];
 let exerptArray = [];
 let bar;
 let input;
-let bars = [];
+// let bars = [];
 
 function preload() {
   wordList = loadStrings("grades.txt");
@@ -38,25 +38,22 @@ function submitted() {
   // console.log(calcPerc(sortExerpt()));
   // console.log(diffPoints(calcPerc(sortExerpt())));
   // console.log(getGrade(diffPoints(calcPerc(sortExerpt()))));
-
   // name functions better so this nested thing is clear
-  // let calcedGrade = getGrade(diffPoints(calcPerc(sortExerpt())));
-  // console.log(calcedGrade);
-  // bar = new Graph (100, 150, 200, calcedGrade);
 
   let perc = calcPerc(sortExerpt());
-  for (i = 0; i <= 5; i++) {
-    bars.push(new Graph (100 + 40 * i, 350, perc[i] * 5, i + 1, perc[i]));
-  }
+  graph.createBars(perc);
+  graph.display();
+  // if (bar) {
+  //   bar.display();
+  // }
+  // for (const bar of bars) {
+  //   bar.display();
+  // }
 }
 
 function draw() {
-  if (bar) {
-    bar.display();
-  }
-  for (const bar of bars) {
-    bar.display();
-  }
+  let calcedGrade = getGrade(diffPoints(calcPerc(sortExerpt())));
+  text(calcedGrade, 80, 120);
 }
 
 // fills out listArray, soring grade words into a 2D array comrpised of each grade's words separately

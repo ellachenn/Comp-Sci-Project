@@ -8,11 +8,10 @@ class Bar {
     }
     
     display () {
-        // rect(this.x, this.h-this.y, this.w, this.h);
+        fill(random(255), random(255), random(255));
         rect(this.x, this.y-this.h, this.w, this.h);
+        fill("black")
         textSize(20)
         text(this.g, this.x + 25, this.y + 40);
     }
 }
-
-// before: rect(this.x, this.y, this.w, this.h);
