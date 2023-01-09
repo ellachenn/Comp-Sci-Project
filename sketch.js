@@ -1,8 +1,6 @@
 // control "c" to get back to where you type "npx http-server" in terminal
 // option shift f = automatically indents
 
-// name functions better
-
 let wordList;
 let listArray = [];
 let exerptArray = [];
@@ -21,7 +19,7 @@ function setup() {
 
 function submitted() {
   exerptArray = input.value();
-  conslog();
+  // conslog();
   let perc = calcPerc(sortExerpt());
   graph.createBars(perc);
   graph.display();
