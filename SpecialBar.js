@@ -9,8 +9,8 @@ class SpecialBar extends Bar {
     display() {
         fill(random(255), random(255), random(255));
         super.display();
-        fill("black")
-        textSize(20)
+        fill("black");
+        textSize(20);
         text(this.g, this.x + 25, this.y + 40);
         text(this.p + "%", this.x + 25, this.y - this.h - 10);
     }

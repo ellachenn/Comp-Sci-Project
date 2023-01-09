@@ -1,9 +1,7 @@
 // control "c" to get back to where you type "npx http-server" in terminal
 // option shift f = automatically indents
 
-// tester: 你好猴子耳朵衣
 // name functions better
-// comment so things are clearer
 
 let wordList;
 let listArray = [];
@@ -18,7 +16,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   makeButton();
-  graph = new Graph(100, 400, 400);
+  graph = new Graph(100, 400, 300);
 }
 
 function submitted() {
@@ -29,6 +27,7 @@ function submitted() {
   graph.display();
 }
 
+// prints each step of the calculation for clarity
 function conslog() {
   console.log(sortExerpt());
   console.log(calcPerc(sortExerpt()));
@@ -45,10 +44,10 @@ function draw() {
 function makeButton() {
   input = createInput();
   input.position(20, 65);
-  button = createButton("submit");
+  let button = createButton("submit");
   button.position(input.x + input.width, 65);
   button.mousePressed(submitted);
-  greeting = createElement("h2", "input exerpt from book");
+  let greeting = createElement("h2", "input exerpt from book");
   greeting.position(20, 5);
   textAlign(CENTER);
   textSize(50);
