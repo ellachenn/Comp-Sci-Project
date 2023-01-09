@@ -1,19 +1,26 @@
+
 class Graph {
-  constructor(x, y, h, g, point) {
-    super(x, y, h, g);
+  constructor(x, y, h) {
+    this.x = x;
+    this.y = y;
+    this.h = h;
     this.w = 40;
-    this.point = point;
     this.bars = [];
   }
 
   createBars(perc) {
-    for (i = 0; i <= 5; i++) {
-    //   this.bars.push(new Bar(100 + 40 * i, 450, perc[i] * 4, i + 1, perc[i]));
+    for (let i = 0; i <= 5; i++) {
+      this.bars.push(new SpecialBar(this.x + 40 * i, this.y, perc[i] / 100 * this.h, i + 1, perc[i]));
     }
   }
 
   display() {
-    // super.display();
-    // text(this.point + "%", this.x + 25, this.y - this.h - 10)
+    this.displayBars();
+  }
+
+  displayBars() {
+    for (const bar of this.bars) {
+      bar.display();
+    }
   }
 }
