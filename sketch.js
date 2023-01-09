@@ -14,15 +14,18 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   makeButton();
-  graph = new Graph(100, 400, 300);
+  graph = new Graph(100, 400, 200);
 }
 
 function submitted() {
+  background('white');
+
   exerptArray = input.value();
   // conslog();
   let perc = calcPerc(sortExerpt());
   graph.createBars(perc);
   graph.display();
+  // console.log(graph.bars);
 }
 
 // prints each step of the calculation for clarity
